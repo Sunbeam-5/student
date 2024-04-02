@@ -3,7 +3,7 @@
     <div class="login-container">
       <div style="width: 350px" class="login-box">
         <div style="font-weight: bold; font-size: 24px; text-align: center; margin-bottom: 30px">登 录</div>
-        <el-form :model="data.form">
+        <el-form :model="data.form" ref="formRef" :rules="relus">
           <el-form-item>
             <el-input prefix-icon="User" v-model="data.form.username" placeholder="请输入账号"/>
           </el-form-item>
@@ -27,6 +27,13 @@ import {reactive} from "vue"
 
 const data = reactive({
   form: {}
+})
+
+const relus = reactive({
+  name: [
+    {required: true, message:"请输入账号"}
+    {required: true, message:"请输入密码"}
+  ]
 })
 
 const login = () => {
